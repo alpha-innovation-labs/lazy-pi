@@ -8,9 +8,9 @@ The goal is simple: make Pi feel easy to extend, easy to browse, and easy to kee
 
 ## Current status
 
-This repository is a fresh start.
+This repository is now the standalone home for the LazyPi codebase.
 
-The standalone LazyPi repo exists, but the implementation has **not** been moved here yet. Right now this project is the place where the package, docs, build flow, and publish flow are being set up before the real extension code lands.
+The existing extension code has been moved here from the knowledge repo. Packaging and publishing flow are being shaped here so LazyPi can become a proper standalone Pi extension package.
 
 ## What LazyPi is for
 

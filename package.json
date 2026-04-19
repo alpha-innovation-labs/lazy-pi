@@ -3,6 +3,19 @@
   "version": "0.1.1",
   "description": "You love LazyVim. You're gonna love LazyPi.",
   "type": "module",
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "pi": {
+    "extensions": [
+      "src/index.ts"
+    ]
+  },
+  "dependencies": {
+    "@mariozechner/pi-coding-agent": "^0.67.68",
+    "@mariozechner/pi-tui": "^0.67.4"
+  },
   "keywords": [
     "pi-package",
     "lazy-pi",
