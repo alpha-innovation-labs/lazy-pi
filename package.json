@@ -1,0 +1,12 @@
+{
+  "name": "lazy-pi",
+  "version": "0.1.1",
+  "description": "You love LazyVim. You're gonna love LazyPi.",
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "lazy-pi",
+    "pi-extension",
+    "package-manager"
+  ]
+}
