@@ -1,4 +1,5 @@
 import type { LazyAction, LazyPackageLoadResult } from "../model/types.js";
+import { readLocalPackageItems } from "../local/readLocalPackageItems.js";
 import { readLazyOtherItems } from "../other/readLazyOtherItems.js";
 import { fetchLazyFavoritePackages } from "../registry/fetchLazyFavoritePackages.js";
 import { fetchLazySearchPackages } from "../registry/fetchLazySearchPackages.js";
@@ -18,6 +19,10 @@ export async function loadLazyModalPackages(action: LazyAction, query: string, c
 	if (action === "favorites") return fetchLazyFavoritePackages(query, cwd);
 	if (action === "other") {
 		const items = await readLazyOtherItems(cwd, query);
+		return { items, totalCount: items.length };
+	}
+	if (action === "local") {
+		const items = await readLocalPackageItems(cwd, query);
 		return { items, totalCount: items.length };
 	}
 	const items = filterLazyInstalledPackages(await readLazyInstalledPackages(cwd), query);

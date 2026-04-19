@@ -23,6 +23,7 @@ export function buildLazyPreviewLines(
 	if (!item) {
 		if (action === "search") return ["Press Enter to run the search."];
 		if (action === "other") return ["No other items found."];
+		if (action === "local") return ["Press a to add a local Pi package path."];
 		return ["No package selected."];
 	}
 	const lines = [item.name.trim(), ""];
@@ -41,9 +42,11 @@ export function buildLazyPreviewLines(
 	if (item.version) lines.push(`Version: ${item.version}`);
 	if (item.repository) lines.push(`Repo: ${item.repository.replace(/^git\+/, "")}`);
 	if (item.location) lines.push(`Path: ${item.location}`);
+	if (item.linkPath) lines.push(`Link: ${item.linkPath}`);
 	lines.push("", ...wrapLazyText(item.description || "No description", width));
 	if (action === "installed") lines.push("", "Installed Lazy packages across local and global workspaces.");
 	if (action === "favorites") lines.push("", "Favorite Lazy packages overview.");
 	if (action === "other") lines.push("", "Other shows non-Lazy extensions and global Pi packages.");
+	if (action === "local") lines.push("", "Local shows globally linked local Pi packages for dev testing.");
 	return lines;
 }

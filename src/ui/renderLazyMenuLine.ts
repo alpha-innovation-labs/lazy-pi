@@ -6,6 +6,7 @@ const ACTION_LABELS: Record<LazyAction, string> = {
 	search: "Search (2)",
 	favorites: "Favorites (3)",
 	other: "Other (4)",
+	local: "Local (5)",
 };
 
 /**

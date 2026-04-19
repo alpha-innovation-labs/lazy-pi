@@ -1,15 +1,18 @@
 import type { LazyTheme } from "../model/types.js";
 
 /**
- * Renders the Lazy Pi query input line.
+ * Renders the Lazy Pi input line.
  *
  * @param theme Active Pi theme.
- * @param query Current search query.
- * @param searching Whether search capture mode is active.
- * @returns Rendered query line.
+ * @param value Current captured value.
+ * @param mode Active capture mode.
+ * @returns Rendered input line.
  */
-export function renderLazyQueryLine(theme: LazyTheme, query: string, searching: boolean): string {
-	const value = query || "press / to search";
-	const prefix = searching ? theme.fg("accent", "/") : theme.fg("dim", "/");
-	return `${prefix} ${query ? value : theme.fg("dim", value)}`;
+export function renderLazyQueryLine(theme: LazyTheme, value: string, mode: "search" | "add-local" | null): string {
+	if (mode === "add-local") {
+		const text = value || "+ add local package path";
+		return `${theme.fg(value ? "accent" : "dim", "+")} ${value ? text : theme.fg("dim", text)}`;
+	}
+	const text = value || "search";
+	return `${theme.fg(mode === "search" ? "accent" : "dim", "/")} ${value ? text : theme.fg("dim", text)}`;
 }

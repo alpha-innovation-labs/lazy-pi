@@ -10,5 +10,6 @@ export function getLazyActionLabel(action: LazyAction): string {
 	if (action === "installed") return "Installed";
 	if (action === "search") return "Search";
 	if (action === "favorites") return "Favorites";
-	return "Other";
+	if (action === "other") return "Other";
+	return "Local";
 }

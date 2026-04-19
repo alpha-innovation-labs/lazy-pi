@@ -3,6 +3,7 @@ import type { LazyModalResult } from "../model/types.js";
 import { toggleLazyFavoritePackage } from "../storage/toggleLazyFavoritePackage.js";
 import { openLazyPackageRepository } from "./openLazyPackageRepository.js";
 import { LazyPiModal } from "../ui/LazyPiModal.js";
+import { addLocalDirectorySource } from "./addLocalDirectorySource.js";
 import { loadLazyModalPackages } from "./loadLazyModalPackages.js";
 import { runLazyModalAction } from "./runLazyModalAction.js";
 
@@ -19,6 +20,7 @@ export async function showLazyPiModal(ctx: ExtensionCommandContext): Promise<voi
 			theme,
 			async (action, query) => loadLazyModalPackages(action, query, ctx.cwd),
 			async (action, item, scope) => runLazyModalAction(ctx, action, item, scope),
+			async (source) => addLocalDirectorySource(ctx, source),
 			async (item) => {
 				const favorited = await toggleLazyFavoritePackage(item);
 				ctx.ui.notify(favorited ? `Favorited ${item.name}` : `Unfavorited ${item.name}`, "info");

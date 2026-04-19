@@ -13,7 +13,7 @@ import { getLazyActionLabel } from "./getLazyActionLabel.js";
  * @returns Rendered status line.
  */
 export function renderLazyStatusLine(theme: LazyTheme, action: LazyAction, count: number, totalCount: number | null, loading: boolean, pendingLabel: string | null): string {
-	const noun = action === "other" ? "items" : "packages";
+	const noun = action === "other" || action === "local" ? "items" : "packages";
 	const label = totalCount !== null ? `${count} / ${totalCount}` : `${count} ${noun}`;
 	const state = pendingLabel ? theme.fg("warning", pendingLabel) : loading ? theme.fg("warning", "loading") : theme.fg("success", label);
 	return `${theme.fg("accent", getLazyActionLabel(action))} · ${state}`;

@@ -13,7 +13,7 @@ export type LazyPackageKind = "lazy-package" | "other-extension" | "pi-package" 
 /**
  * Lazy Pi top-level modal actions.
  */
-export type LazyAction = "installed" | "search" | "favorites" | "other";
+export type LazyAction = "installed" | "search" | "favorites" | "other" | "local";
 
 /**
  * One package row shown in the Lazy Pi modal.
@@ -33,6 +33,7 @@ export type LazyPackageSummary = {
 	installedGlobal?: boolean;
 	installedLocal?: boolean;
 	location?: string;
+	linkPath?: string;
 	category?: string;
 };
 
@@ -93,3 +94,8 @@ export type LazyModalResult = "reload" | null;
  * Executes one Lazy Pi action for the selected package.
  */
 export type RunLazyAction = (action: "install" | "update" | "delete", item: LazyPackageSummary, scope: LazyInstallScope) => Promise<LazyMutationTask>;
+
+/**
+ * Adds one local Pi package as a global dev link.
+ */
+export type AddLocalDirectory = (source: string) => Promise<LazyMutationTask>;

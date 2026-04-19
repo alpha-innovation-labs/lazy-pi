@@ -6,5 +6,5 @@ import type { LazyAction } from "../model/types.js";
  * @returns Ordered Lazy Pi actions.
  */
 export function getLazyActions(): LazyAction[] {
-	return ["installed", "search", "favorites", "other"];
+	return ["installed", "search", "favorites", "other", "local"];
 }
